@@ -1,0 +1,67 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ master, main ]
+    paths-ignore:
+      - 'docs/**'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Determine basePath
+        id: basepath
+        run: |
+          if [[ "${{ github.repository }}" == *".github.io" ]]; then
+            echo "basepath=" >> $GITHUB_OUTPUT
+            echo "repository_type=user" >> $GITHUB_OUTPUT
+          else
+            REPO_NAME=$(echo "${{ github.repository }}" | cut -d'/' -f2)
+            echo "basepath=/$REPO_NAME" >> $GITHUB_OUTPUT
+            echo "repository_type=project" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build Next.js app
+        env:
+          GITHUB_REPOSITORY_NAME: ${{ steps.basepath.outputs.basepath }}
+        run: npm run build:docs
+
+      - name: Copy build output to docs
+        run: |
+          rm -rf docs
+          cp -r out docs
+          # Create .nojekyll to prevent Jekyll processing
+          touch docs/.nojekyll
+
+      - name: Commit and push docs
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add docs/
+          # Only commit if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy to GitHub Pages: ${{ github.sha }} [skip ci]"
+            git push
+          fi
