@@ -4,6 +4,7 @@ import { useLocale } from "@/lib/locale-context"
 import { Section } from "@/components/section"
 import { ValueCard } from "@/components/value-card"
 import { Shield, Award, Users, ClipboardCheck, Wrench, CheckCircle } from "lucide-react"
+import { publicUrl } from "@/lib/utils"
 
 export function AboutContent() {
   const { t, locale } = useLocale()
@@ -32,7 +33,7 @@ export function AboutContent() {
           <div className="relative">
             <div className="aspect-square rounded-2xl overflow-hidden">
               <img
-                src="/sparkle-fix-tietoa-meista.jpg"
+                src={publicUrl("sparkle-fix-tietoa-meista.jpg")}
                 alt="Sparkle Fix team at work"
                 className="w-full h-full object-cover"
               />

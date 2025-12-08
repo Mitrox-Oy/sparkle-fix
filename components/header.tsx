@@ -5,6 +5,7 @@ import { useState } from "react"
 import { useLocale } from "@/lib/locale-context"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { publicUrl } from "@/lib/utils"
 
 export function Header() {
   const { locale, setLocale, t } = useLocale()
@@ -26,7 +27,7 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
             <img
-              src="/sparkle-fix-logo-nobackground.png"
+              src={publicUrl("sparkle-fix-logo-nobackground.png")}
               alt="Sparkle Fix Oy"
               className="h-12 md:h-16 w-64 md:w-64 object-contain"
             />

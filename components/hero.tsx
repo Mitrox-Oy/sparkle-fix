@@ -4,6 +4,7 @@ import Link from "next/link"
 import { useLocale } from "@/lib/locale-context"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Play } from "lucide-react"
+import { publicUrl } from "@/lib/utils"
 
 export function Hero() {
   const { t, locale } = useLocale()
@@ -12,7 +13,7 @@ export function Hero() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
-        <img src="/luxury-black-car-in-professional-car-wash-studio-w.jpg" alt="" className="w-full h-full object-cover opacity-40" />
+        <img src={publicUrl("luxury-black-car-in-professional-car-wash-studio-w.jpg")} alt="" className="w-full h-full object-cover opacity-40" />
         {/* Gold Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-black via-black/80 to-[#bf9246]/20" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />

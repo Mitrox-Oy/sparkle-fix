@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { useLocale } from "@/lib/locale-context"
 import { X, ZoomIn } from "lucide-react"
+import { publicUrl } from "@/lib/utils"
 
 interface GalleryImage {
   id: number
@@ -11,13 +12,13 @@ interface GalleryImage {
   category: "dealership" | "private" | "all"
 }
 
-const galleryImages: GalleryImage[] = [
-  { id: 1, src: "/luxury-car-detailing-before-and-after-polish.jpg", alt: "Car detailing", category: "private" },
-  { id: 2, src: "/professional-car-wash-interior-cleaning.jpg", alt: "Interior cleaning", category: "private" },
-  { id: 3, src: "/dealership-cars-being-washed-professional.jpg", alt: "Dealership service", category: "dealership" },
-  { id: 4, src: "/ceramic-coating-application-on-black-car.jpg", alt: "Ceramic coating", category: "private" },
-  { id: 5, src: "/car-showroom-clean-vehicles-for-sale.jpg", alt: "Sales prep", category: "dealership" },
-  { id: 6, src: "/car-paint-correction-polishing-machine.jpg", alt: "Paint correction", category: "private" },
+const getGalleryImages = (): GalleryImage[] => [
+  { id: 1, src: publicUrl("luxury-car-detailing-before-and-after-polish.jpg"), alt: "Car detailing", category: "private" },
+  { id: 2, src: publicUrl("professional-car-wash-interior-cleaning.jpg"), alt: "Interior cleaning", category: "private" },
+  { id: 3, src: publicUrl("dealership-cars-being-washed-professional.jpg"), alt: "Dealership service", category: "dealership" },
+  { id: 4, src: publicUrl("ceramic-coating-application-on-black-car.jpg"), alt: "Ceramic coating", category: "private" },
+  { id: 5, src: publicUrl("car-showroom-clean-vehicles-for-sale.jpg"), alt: "Sales prep", category: "dealership" },
+  { id: 6, src: publicUrl("car-paint-correction-polishing-machine.jpg"), alt: "Paint correction", category: "private" },
 ]
 
 interface GalleryGridProps {
@@ -36,6 +37,7 @@ export function GalleryGrid({ showFilters = true, limit }: GalleryGridProps) {
     { value: "private", label: t.gallery.filters.private },
   ] as const
 
+  const galleryImages = getGalleryImages()
   const filteredImages = galleryImages.filter((img) => filter === "all" || img.category === filter)
 
   const displayImages = limit ? filteredImages.slice(0, limit) : filteredImages
@@ -70,7 +72,7 @@ export function GalleryGrid({ showFilters = true, limit }: GalleryGridProps) {
             className="group relative aspect-[4/3] rounded-xl overflow-hidden bg-white/5"
           >
             <img
-              src={image.src || "/placeholder.svg"}
+              src={image.src || publicUrl("placeholder.svg")}
               alt={image.alt}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
@@ -97,7 +99,7 @@ export function GalleryGrid({ showFilters = true, limit }: GalleryGridProps) {
             <X className="w-6 h-6 text-white" />
           </button>
           <img
-            src={selectedImage.src || "/placeholder.svg"}
+            src={selectedImage.src || publicUrl("placeholder.svg")}
             alt={selectedImage.alt}
             className="max-w-full max-h-[90vh] rounded-lg object-contain"
             onClick={(e) => e.stopPropagation()}
