@@ -34,11 +34,8 @@ export function ContactContent() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-500 mb-1">{t.contactPage.info.email}</p>
-                  <a
-                    href="mailto:kristjanorav02@gmail.com"
-                    className="text-white hover:text-[#edd67c] transition-colors"
-                  >
-                    kristjanorav02@gmail.com
+                  <a href="mailto:plokk81@hotmail.com" className="text-white hover:text-[#edd67c] transition-colors">
+                    plokk81@hotmail.com
                   </a>
                   <p className="text-xs text-green-400 mt-1 flex items-center gap-1">
                     <span className="w-2 h-2 rounded-full bg-green-400" />
@@ -53,8 +50,8 @@ export function ContactContent() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-500 mb-1">{t.contactPage.info.phone}</p>
-                  <a href="tel:0451228680" className="text-white hover:text-[#edd67c] transition-colors">
-                    045 122 8680
+                  <a href="tel:0451228700" className="text-white hover:text-[#edd67c] transition-colors">
+                    045 122 8700
                   </a>
                 </div>
               </div>
@@ -84,7 +81,7 @@ export function ContactContent() {
             {/* Contact Person */}
             <div className="p-6 rounded-2xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10">
               <p className="text-sm text-gray-500 mb-2">{locale === "fi" ? "Yhteyshenkilö" : "Contact Person"}</p>
-              <p className="text-xl font-semibold text-white">KRISTJAN ORAV</p>
+              <p className="text-xl font-semibold text-white">KALVI ORAV</p>
               <p className="text-gray-400 text-sm mt-1">
                 {locale === "fi" ? "Yrittäjä / Toimitusjohtaja" : "Founder / CEO"}
               </p>

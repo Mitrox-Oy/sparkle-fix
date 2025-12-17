@@ -102,6 +102,11 @@ export const translations = {
         private: "Yksityiset",
       },
     },
+    // Before & After
+    beforeAfter: {
+      label: "Ennen & Jälkeen",
+      helper: "Ennen & jälkeen -kuvat",
+    },
     // Footer
     footer: {
       description: "Luotettavaa autopesua ja automeikkausta Helsingissä.",
@@ -265,6 +270,11 @@ export const translations = {
       title: "Galleria",
       subtitle: "Katso esimerkkejä työstämme",
     },
+    // Before & After page
+    beforeAfterPage: {
+      title: "Ennen & jälkeen",
+      subtitle: "Katso projekteja, joissa näkyy selkeä ero ennen ja jälkeen käsittelyn.",
+    },
     // Contact page
     contactPage: {
       title: "Yhteystiedot",
@@ -393,6 +403,11 @@ export const translations = {
         dealerships: "Dealerships",
         private: "Private",
       },
+    },
+    // Before & After
+    beforeAfter: {
+      label: "Before & After",
+      helper: "Before & After photos",
     },
     // Footer
     footer: {
@@ -554,6 +569,11 @@ export const translations = {
     galleryPage: {
       title: "Gallery",
       subtitle: "See examples of our work",
+    },
+    // Before & After page
+    beforeAfterPage: {
+      title: "Before & After",
+      subtitle: "See projects that clearly show the transformation before and after our work.",
     },
     // Contact page
     contactPage: {
