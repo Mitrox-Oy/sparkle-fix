@@ -49,7 +49,7 @@ export function Hero() {
               size="lg"
               className="bg-gradient-to-r from-[#e3c46a] to-[#bf9246] hover:from-[#bf9246] hover:to-[#bf9246] text-black font-semibold px-8 py-6 text-lg rounded-xl shadow-lg shadow-[#e3c46a]/25 hover:shadow-[#e3c46a]/40 transition-all"
             >
-              <Link href="/contact">
+              <Link href={`/${locale}/contact`}>
                 {t.hero.ctaPrimary}
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
@@ -60,7 +60,7 @@ export function Hero() {
               size="lg"
               className="border-white/20 text-white hover:bg-white/10 hover:border-white/40 px-8 py-6 text-lg rounded-xl bg-transparent"
             >
-              <Link href="/services">
+              <Link href={`/${locale}/services`}>
                 <Play className="mr-2 w-5 h-5" />
                 {t.hero.ctaSecondary}
               </Link>

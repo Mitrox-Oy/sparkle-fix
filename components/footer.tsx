@@ -1,20 +1,29 @@
 "use client"
 
 import Link from "next/link"
+import { useRouter, usePathname } from "next/navigation"
 import { useLocale } from "@/lib/locale-context"
 import { Sparkles, Mail, Phone, MapPin, Instagram, Facebook, Linkedin } from "lucide-react"
 
 export function Footer() {
   const { locale, setLocale, t } = useLocale()
+  const router = useRouter()
+  const pathname = usePathname()
 
   const navLinks = [
-    { href: "/", label: t.nav.home },
-    { href: "/about", label: t.nav.about },
-    { href: "/services", label: t.nav.services },
-    { href: "/pricing", label: t.nav.pricing },
-    { href: "/gallery", label: t.nav.gallery },
-    { href: "/contact", label: t.nav.contact },
+    { href: `/${locale}`, label: t.nav.home },
+    { href: `/${locale}/about`, label: t.nav.about },
+    { href: `/${locale}/services`, label: t.nav.services },
+    { href: `/${locale}/pricing`, label: t.nav.pricing },
+    { href: `/${locale}/gallery`, label: t.nav.gallery },
+    { href: `/${locale}/contact`, label: t.nav.contact },
   ]
+
+  const handleLocaleSwitch = (newLocale: "fi" | "en") => {
+    setLocale(newLocale)
+    const pathWithoutLocale = pathname.replace(/^\/(fi|en)/, "") || ""
+    router.push(`/${newLocale}${pathWithoutLocale}`)
+  }
 
   return (
     <footer className="bg-black border-t border-white/10">
@@ -22,7 +31,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4">
+            <Link href={`/${locale}`} className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#edd67c] to-[#e3c46a] flex items-center justify-center">
                 <Sparkles className="w-5 h-5 text-black" />
               </div>
@@ -32,7 +41,7 @@ export function Footer() {
             {/* Language Switcher */}
             <div className="flex gap-2">
               <button
-                onClick={() => setLocale("fi")}
+                onClick={() => handleLocaleSwitch("fi")}
                 className={`px-3 py-1 text-sm rounded-lg transition-colors ${
                   locale === "fi"
                     ? "bg-[#f1d37b] text-black font-medium"
@@ -42,7 +51,7 @@ export function Footer() {
                 FI
               </button>
               <button
-                onClick={() => setLocale("en")}
+                onClick={() => handleLocaleSwitch("en")}
                 className={`px-3 py-1 text-sm rounded-lg transition-colors ${
                   locale === "en"
                     ? "bg-[#f1d37b] text-black font-medium"
@@ -129,7 +138,14 @@ export function Footer() {
           <p className="text-gray-500 text-sm">
             © {new Date().getFullYear()} Sparkle Fix Oy. {t.footer.rights}
           </p>
-          <p className="text-gray-600 text-xs">Powered by Mitrox Oy</p>
+          <a
+            href="https://mitrox.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 text-xs hover:text-gray-400 transition-colors"
+          >
+            Powered by Mitrox Oy
+          </a>
         </div>
       </div>
     </footer>

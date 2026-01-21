@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { useState } from "react"
+import { useRouter, usePathname } from "next/navigation"
 import { useLocale } from "@/lib/locale-context"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -10,22 +11,32 @@ import { publicUrl } from "@/lib/utils"
 export function Header() {
   const { locale, setLocale, t } = useLocale()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const router = useRouter()
+  const pathname = usePathname()
 
   const navLinks = [
-    { href: "/", label: t.nav.home },
-    { href: "/about", label: t.nav.about },
-    { href: "/services", label: t.nav.services },
-    { href: "/pricing", label: t.nav.pricing },
-    { href: "/gallery", label: t.nav.gallery },
-    { href: "/contact", label: t.nav.contact },
+    { href: `/${locale}`, label: t.nav.home },
+    { href: `/${locale}/about`, label: t.nav.about },
+    { href: `/${locale}/services`, label: t.nav.services },
+    { href: `/${locale}/pricing`, label: t.nav.pricing },
+    { href: `/${locale}/gallery`, label: t.nav.gallery },
+    { href: `/${locale}/contact`, label: t.nav.contact },
   ]
+
+  const handleLocaleSwitch = () => {
+    const newLocale = locale === "fi" ? "en" : "fi"
+    setLocale(newLocale)
+    // Extract path after locale
+    const pathWithoutLocale = pathname.replace(/^\/(fi|en)/, "") || ""
+    router.push(`/${newLocale}${pathWithoutLocale}`)
+  }
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
+          <Link href={`/${locale}`} className="flex items-center gap-2 group">
             <img
               src={publicUrl("sparkle-fix-logo-nobackground.png")}
               alt="Sparkle Fix Oy"
@@ -49,7 +60,7 @@ export function Header() {
           {/* Language Switcher & CTA */}
           <div className="hidden md:flex items-center gap-3">
             <button
-              onClick={() => setLocale(locale === "fi" ? "en" : "fi")}
+              onClick={handleLocaleSwitch}
               className="px-3 py-1.5 text-sm font-medium text-gray-300 hover:text-white border border-white/20 rounded-lg hover:border-[#f1d37b]/50 transition-all"
             >
               {locale === "fi" ? "EN" : "FI"}
@@ -58,7 +69,7 @@ export function Header() {
               asChild
               className="bg-gradient-to-r from-[#e3c46a] to-[#bf9246] hover:from-[#bf9246] hover:to-[#bf9246] text-black font-semibold"
             >
-              <Link href="/contact">{t.hero.ctaPrimary}</Link>
+              <Link href={`/${locale}/contact`}>{t.hero.ctaPrimary}</Link>
             </Button>
           </div>
 
@@ -88,7 +99,7 @@ export function Header() {
               ))}
               <div className="flex items-center gap-3 px-4 pt-4 mt-2 border-t border-white/10">
                 <button
-                  onClick={() => setLocale(locale === "fi" ? "en" : "fi")}
+                  onClick={handleLocaleSwitch}
                   className="px-3 py-1.5 text-sm font-medium text-gray-300 border border-white/20 rounded-lg"
                 >
                   {locale === "fi" ? "EN" : "FI"}
@@ -97,7 +108,7 @@ export function Header() {
                   asChild
                   className="flex-1 bg-gradient-to-r from-[#e3c46a] to-[#bf9246] text-black font-semibold"
                 >
-                  <Link href="/contact">{t.hero.ctaPrimary}</Link>
+                  <Link href={`/${locale}/contact`}>{t.hero.ctaPrimary}</Link>
                 </Button>
               </div>
             </nav>

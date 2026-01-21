@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Finnish Home -->
+  <url>
+    <loc>https://sparklefix.fi/fi</loc>
+    <lastmod>2026-01-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fi-FI" href="https://sparklefix.fi/fi" />
+    <xhtml:link rel="alternate" hreflang="en-FI" href="https://sparklefix.fi/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sparklefix.fi/fi" />
+  </url>
+  
+  <!-- English Home -->
+  <url>
+    <loc>https://sparklefix.fi/en</loc>
+    <lastmod>2026-01-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fi-FI" href="https://sparklefix.fi/fi" />
+    <xhtml:link rel="alternate" hreflang="en-FI" href="https://sparklefix.fi/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sparklefix.fi/fi" />
+  </url>
+  
+  <!-- Finnish About -->
+  <url>
+    <loc>https://sparklefix.fi/fi/about</loc>
+    <lastmod>2026-01-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fi-FI" href="https://sparklefix.fi/fi/about" />
+    <xhtml:link rel="alternate" hreflang="en-FI" href="https://sparklefix.fi/en/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sparklefix.fi/fi/about" />
+  </url>
+  
+  <!-- English About -->
+  <url>
+    <loc>https://sparklefix.fi/en/about</loc>
+    <lastmod>2026-01-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fi-FI" href="https://sparklefix.fi/fi/about" />
+    <xhtml:link rel="alternate" hreflang="en-FI" href="https://sparklefix.fi/en/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sparklefix.fi/fi/about" />
+  </url>
+  
+  <!-- Finnish Services -->
+  <url>
+    <loc>https://sparklefix.fi/fi/services</loc>
+    <lastmod>2026-01-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fi-FI" href="https://sparklefix.fi/fi/services" />
+    <xhtml:link rel="alternate" hreflang="en-FI" href="https://sparklefix.fi/en/services" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sparklefix.fi/fi/services" />
+  </url>
+  
+  <!-- English Services -->
+  <url>
+    <loc>https://sparklefix.fi/en/services</loc>
+    <lastmod>2026-01-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fi-FI" href="https://sparklefix.fi/fi/services" />
+    <xhtml:link rel="alternate" hreflang="en-FI" href="https://sparklefix.fi/en/services" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sparklefix.fi/fi/services" />
+  </url>
+  
+  <!-- Finnish Pricing -->
+  <url>
+    <loc>https://sparklefix.fi/fi/pricing</loc>
+    <lastmod>2026-01-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fi-FI" href="https://sparklefix.fi/fi/pricing" />
+    <xhtml:link rel="alternate" hreflang="en-FI" href="https://sparklefix.fi/en/pricing" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sparklefix.fi/fi/pricing" />
+  </url>
+  
+  <!-- English Pricing -->
+  <url>
+    <loc>https://sparklefix.fi/en/pricing</loc>
+    <lastmod>2026-01-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fi-FI" href="https://sparklefix.fi/fi/pricing" />
+    <xhtml:link rel="alternate" hreflang="en-FI" href="https://sparklefix.fi/en/pricing" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sparklefix.fi/fi/pricing" />
+  </url>
+  
+  <!-- Finnish Gallery -->
+  <url>
+    <loc>https://sparklefix.fi/fi/gallery</loc>
+    <lastmod>2026-01-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fi-FI" href="https://sparklefix.fi/fi/gallery" />
+    <xhtml:link rel="alternate" hreflang="en-FI" href="https://sparklefix.fi/en/gallery" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sparklefix.fi/fi/gallery" />
+  </url>
+  
+  <!-- English Gallery -->
+  <url>
+    <loc>https://sparklefix.fi/en/gallery</loc>
+    <lastmod>2026-01-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fi-FI" href="https://sparklefix.fi/fi/gallery" />
+    <xhtml:link rel="alternate" hreflang="en-FI" href="https://sparklefix.fi/en/gallery" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sparklefix.fi/fi/gallery" />
+  </url>
+  
+  <!-- Finnish Before & After -->
+  <url>
+    <loc>https://sparklefix.fi/fi/before-after</loc>
+    <lastmod>2026-01-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fi-FI" href="https://sparklefix.fi/fi/before-after" />
+    <xhtml:link rel="alternate" hreflang="en-FI" href="https://sparklefix.fi/en/before-after" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sparklefix.fi/fi/before-after" />
+  </url>
+  
+  <!-- English Before & After -->
+  <url>
+    <loc>https://sparklefix.fi/en/before-after</loc>
+    <lastmod>2026-01-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fi-FI" href="https://sparklefix.fi/fi/before-after" />
+    <xhtml:link rel="alternate" hreflang="en-FI" href="https://sparklefix.fi/en/before-after" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sparklefix.fi/fi/before-after" />
+  </url>
+  
+  <!-- Finnish Contact -->
+  <url>
+    <loc>https://sparklefix.fi/fi/contact</loc>
+    <lastmod>2026-01-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fi-FI" href="https://sparklefix.fi/fi/contact" />
+    <xhtml:link rel="alternate" hreflang="en-FI" href="https://sparklefix.fi/en/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sparklefix.fi/fi/contact" />
+  </url>
+  
+  <!-- English Contact -->
+  <url>
+    <loc>https://sparklefix.fi/en/contact</loc>
+    <lastmod>2026-01-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fi-FI" href="https://sparklefix.fi/fi/contact" />
+    <xhtml:link rel="alternate" hreflang="en-FI" href="https://sparklefix.fi/en/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sparklefix.fi/fi/contact" />
+  </url>
+  
+</urlset>
