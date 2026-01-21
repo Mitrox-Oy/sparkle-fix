@@ -51,7 +51,7 @@ export function BookingEmbed({ provider = "placeholder", url, className }: Booki
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <a
-            href="mailto:kristjanorav02@gmail.com"
+            href="mailto:sparkle.fix@hotmail.com"
             className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-[#f1d37b] to-[#e3c46a] text-black font-semibold rounded-xl hover:from-[#e3c46a] hover:to-[#bf9246] transition-all"
           >
             Lähetä sähköpostia

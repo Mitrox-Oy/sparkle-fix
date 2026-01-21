@@ -50,10 +50,10 @@ export function PricingContent() {
       {/* Additional Services */}
       <Section title={locale === "fi" ? "Lisäpalvelut" : "Additional Services"} className="bg-black">
         <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-          <div className="p-6 rounded-2xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10">
+          <div className="p-6 rounded-2xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 flex flex-col h-full">
             <h3 className="text-xl font-semibold text-white mb-2">{t.pricing.services.polishing.title}</h3>
             <p className="text-gray-400 text-sm mb-4">{t.pricing.services.polishing.description}</p>
-            <div className="space-y-1">
+            <div className="space-y-1 mt-auto">
               <p className="text-[#edd67c] font-semibold">
                 {locale === "fi" ? "Henkilöauto: " : "Passenger car: "}€{t.pricing.services.polishing.price}
               </p>
@@ -63,10 +63,10 @@ export function PricingContent() {
             </div>
           </div>
 
-          <div className="p-6 rounded-2xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10">
+          <div className="p-6 rounded-2xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 flex flex-col h-full">
             <h3 className="text-xl font-semibold text-white mb-2">{t.pricing.services.fullDetail.title}</h3>
             <p className="text-gray-400 text-sm mb-4">{t.pricing.services.fullDetail.description}</p>
-            <div className="space-y-1">
+            <div className="space-y-1 mt-auto">
               <p className="text-[#edd67c] font-semibold">
                 {locale === "fi" ? "Henkilöauto: " : "Passenger car: "}€{t.pricing.services.fullDetail.price}
               </p>

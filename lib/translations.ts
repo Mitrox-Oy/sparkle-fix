@@ -234,7 +234,7 @@ export const translations = {
           popular: true,
         },
         ceramic: {
-          title: "Korrek Ceramicvahaus",
+          title: "Keraaminenvahaus",
           price: "300",
           priceSuv: "350",
           priceCure: "500",
@@ -534,7 +534,7 @@ export const translations = {
           popular: true,
         },
         ceramic: {
-          title: "Korrek Ceramic Wax",
+          title: "Ceramic wax",
           price: "300",
           priceSuv: "350",
           priceCure: "500",

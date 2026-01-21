@@ -30,8 +30,7 @@ export const metadata: Metadata = {
   creator: "Sparkle Fix Oy",
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/favicon.png", type: "image/png" },
+      { url: "/favicon.png", type: "image/png", sizes: "any" },
     ],
     apple: "/favicon.png",
   },

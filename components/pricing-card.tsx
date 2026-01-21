@@ -22,7 +22,7 @@ export function PricingCard({ title, price, period, description, features, popul
   return (
     <div
       className={cn(
-        "relative rounded-2xl border p-6 md:p-8 transition-all",
+        "relative rounded-2xl border p-6 md:p-8 transition-all flex flex-col h-full",
         popular
           ? "bg-gradient-to-br from-[#f1d37b]/10 to-[#e3c46a]/5 border-[#f1d37b]/30 shadow-lg shadow-[#f1d37b]/10"
           : "bg-gradient-to-br from-white/5 to-white/[0.02] border-white/10 hover:border-white/20",
@@ -58,7 +58,7 @@ export function PricingCard({ title, price, period, description, features, popul
       </div>
 
       {/* Features */}
-      <ul className="space-y-3 mb-8">
+      <ul className="space-y-3 mb-8 flex-grow">
         {features.map((feature, index) => (
           <li key={index} className="flex items-start gap-3">
             <div
@@ -78,7 +78,7 @@ export function PricingCard({ title, price, period, description, features, popul
       <Button
         asChild
         className={cn(
-          "w-full",
+          "w-full mt-auto",
           popular
             ? "bg-gradient-to-r from-[#f1d37b] to-[#e3c46a] hover:from-[#e3c46a] hover:to-[#bf9246] text-black font-semibold"
             : "bg-white/10 hover:bg-white/20 text-white",
