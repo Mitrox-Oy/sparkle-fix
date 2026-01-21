@@ -74,8 +74,8 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
                 <Mail className="w-4 h-4 text-[#edd67c] mt-0.5 shrink-0" />
-                <a href="mailto:plokk81@hotmail.com" className="text-gray-400 hover:text-white text-sm transition-colors">
-                  plokk81@hotmail.com
+                <a href="mailto:sparkle.fix@hotmail.com" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  sparkle.fix@hotmail.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
@@ -86,7 +86,11 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-[#edd67c] mt-0.5 shrink-0" />
-                <span className="text-gray-400 text-sm">Helsinki, Finland</span>
+                <div className="text-gray-400 text-sm">
+                  <div>Tiistinniityntie 6</div>
+                  <div>Espoo Rakennus A</div>
+                  <div>Tila 3</div>
+                </div>
               </li>
             </ul>
           </div>
@@ -125,7 +129,7 @@ export function Footer() {
           <p className="text-gray-500 text-sm">
             © {new Date().getFullYear()} Sparkle Fix Oy. {t.footer.rights}
           </p>
-          <p className="text-gray-600 text-xs">Powered by passion for cars</p>
+          <p className="text-gray-600 text-xs">Powered by Mitrox Oy</p>
         </div>
       </div>
     </footer>

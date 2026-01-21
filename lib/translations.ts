@@ -11,7 +11,7 @@ export const translations = {
     },
     // Hero
     hero: {
-      headline: "Luotettavaa autopesua ja automeikkausta",
+      headline: "Luotettavaa automeikkausta",
       subheadline:
         "Huolehdimme autostasi kuin se olisi omamme. Ammattitaitoinen käsittely autoliikkeille ja yksityisille asiakkaille.",
       ctaPrimary: "Varaa aika",
@@ -109,7 +109,7 @@ export const translations = {
     },
     // Footer
     footer: {
-      description: "Luotettavaa autopesua ja automeikkausta Helsingissä.",
+      description: "Luotettavaa automeikkausta pääkaupunkiseudulla.",
       quickLinks: "Pikalinkit",
       contact: "Yhteystiedot",
       followUs: "Seuraa meitä",
@@ -315,7 +315,7 @@ export const translations = {
     },
     // Hero
     hero: {
-      headline: "Reliable car wash and detailing",
+      headline: "Reliable car detailing",
       subheadline:
         "We take care of your car like it's our own. Professional service for dealerships and private customers.",
       ctaPrimary: "Book now",
@@ -411,7 +411,7 @@ export const translations = {
     },
     // Footer
     footer: {
-      description: "Reliable car wash and detailing in Helsinki.",
+      description: "Reliable car detailing in Helsinki metropolitan area.",
       quickLinks: "Quick Links",
       contact: "Contact",
       followUs: "Follow Us",

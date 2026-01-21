@@ -33,9 +33,9 @@ export function Hero() {
 
           {/* Headline */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-6">
-            <span className="block">{t.hero.headline.split(" ").slice(0, 2).join(" ")}</span>
+            <span className="block">{t.hero.headline.split(" ").slice(0, 1).join(" ")}</span>
             <span className="block bg-gradient-to-r from-[#f1d37b] via-[#e3c46a] to-[#bf9246] bg-clip-text text-transparent">
-              {t.hero.headline.split(" ").slice(2).join(" ")}
+              {t.hero.headline.split(" ").slice(1).join(" ")}
             </span>
           </h1>
 

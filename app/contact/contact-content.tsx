@@ -34,8 +34,8 @@ export function ContactContent() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-500 mb-1">{t.contactPage.info.email}</p>
-                  <a href="mailto:plokk81@hotmail.com" className="text-white hover:text-[#edd67c] transition-colors">
-                    plokk81@hotmail.com
+                  <a href="mailto:sparkle.fix@hotmail.com" className="text-white hover:text-[#edd67c] transition-colors">
+                    sparkle.fix@hotmail.com
                   </a>
                   <p className="text-xs text-green-400 mt-1 flex items-center gap-1">
                     <span className="w-2 h-2 rounded-full bg-green-400" />
@@ -62,7 +62,9 @@ export function ContactContent() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-500 mb-1">{locale === "fi" ? "Sijainti" : "Location"}</p>
-                  <p className="text-white">Helsinki, Finland</p>
+                  <p className="text-white">Tiistinniityntie 6</p>
+                  <p className="text-white">Espoo Rakennus A</p>
+                  <p className="text-white">Tila 3</p>
                 </div>
               </div>
 

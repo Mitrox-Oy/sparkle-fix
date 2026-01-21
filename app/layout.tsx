@@ -28,6 +28,13 @@ export const metadata: Metadata = {
   keywords: ["autopesu", "car wash", "detailing", "automeikkaus", "Helsinki", "autoliike", "auton puhdistus"],
   authors: [{ name: "Sparkle Fix Oy" }],
   creator: "Sparkle Fix Oy",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.png", type: "image/png" },
+    ],
+    apple: "/favicon.png",
+  },
   openGraph: {
     type: "website",
     locale: "fi_FI",

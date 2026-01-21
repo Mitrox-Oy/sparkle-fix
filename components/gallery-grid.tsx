@@ -65,6 +65,14 @@ const getGalleryImages = (): GalleryImage[] => [
   { id: 63, src: publicUrl("IMG-20251214-WA0068.jpg"), alt: "Gallery image 63", category: "private" },
   { id: 64, src: publicUrl("IMG-20251214-WA0069.jpg"), alt: "Gallery image 64", category: "private" },
   { id: 65, src: publicUrl("IMG-20251214-WA0070.jpg"), alt: "Gallery image 65", category: "private" },
+  { id: 66, src: publicUrl("sparkle-gallery-1.jpg"), alt: "Gallery image 66", category: "private" },
+  { id: 67, src: publicUrl("sparkle-gallery-2.jpg"), alt: "Gallery image 67", category: "private" },
+  { id: 68, src: publicUrl("sparkle-gallery-3.jpg"), alt: "Gallery image 68", category: "private" },
+  { id: 69, src: publicUrl("sparkle-gallery-4.jpg"), alt: "Gallery image 69", category: "private" },
+  { id: 70, src: publicUrl("sparkle-gallery-5.jpg"), alt: "Gallery image 70", category: "private" },
+  { id: 71, src: publicUrl("sparkle-gallery-6.jpg"), alt: "Gallery image 71", category: "private" },
+  { id: 72, src: publicUrl("sparkle-gallery-7.jpg"), alt: "Gallery image 72", category: "dealership" },
+  { id: 73, src: publicUrl("sparkle-gallery-8.jpg"), alt: "Gallery image 73", category: "private" },
 ]
 
 interface GalleryGridProps {
