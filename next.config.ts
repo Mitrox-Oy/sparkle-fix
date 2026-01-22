@@ -6,11 +6,10 @@ import type { NextConfig } from "next";
 const basePath = process.env.GITHUB_REPOSITORY_NAME || "";
 
 const nextConfig: NextConfig = {
-  output: "export",
   basePath: basePath,
   trailingSlash: true,
   images: {
-    unoptimized: true, // Required for static export
+    unoptimized: false, // Netlify Next.js plugin handles image optimization
   },
   // Expose basePath to client-side via environment variable
   env: {
