@@ -59,7 +59,7 @@ export default function HomePage() {
         }
         className="bg-gradient-to-b from-black to-gray-950"
       >
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
           <ServiceCard
             icon={<Car className="w-6 h-6 text-[#edd67c]" />}
             title={t.services.basicWash.title}
