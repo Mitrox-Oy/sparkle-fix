@@ -2,8 +2,7 @@
 
 import Link from "next/link"
 import { useLocale } from "@/lib/locale-context"
-import { Check, Sparkles } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Check, ArrowUpRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 interface PricingCardProps {
@@ -17,75 +16,63 @@ interface PricingCardProps {
 }
 
 export function PricingCard({ title, price, period, description, features, popular, className }: PricingCardProps) {
-  const { t } = useLocale()
+  const { t, locale } = useLocale()
 
   return (
     <div
       className={cn(
-        "relative rounded-2xl border p-6 md:p-8 transition-all flex flex-col h-full",
-        popular
-          ? "bg-gradient-to-br from-[#f1d37b]/10 to-[#e3c46a]/5 border-[#f1d37b]/30 shadow-lg shadow-[#f1d37b]/10"
-          : "bg-gradient-to-br from-white/5 to-white/[0.02] border-white/10 hover:border-white/20",
+        "relative flex flex-col h-full border border-white/10 rounded-md p-7 md:p-8 transition-colors hover:border-white/20",
+        popular && "border-[#e3c46a]/40",
         className,
       )}
     >
-      {/* Popular Badge */}
+      {/* Gold top hairline for the popular tier */}
       {popular && (
-        <div className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-4 py-1.5 bg-gradient-to-r from-[#f1d37b] to-[#e3c46a] rounded-full">
-          <Sparkles className="w-4 h-4 text-black" />
-          <span className="text-black text-sm font-semibold">Popular</span>
-        </div>
+        <>
+          <span className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#e3c46a] to-transparent" />
+          <span className="eyebrow text-[#f1d37b] mb-4">Suosituin · Popular</span>
+        </>
       )}
 
       {/* Header */}
-      <div className="mb-6">
-        <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
-        <p className="text-gray-400 text-sm">{description}</p>
-      </div>
+      <h3 className="font-display text-2xl md:text-3xl leading-tight tracking-[-0.01em] text-white mb-2">{title}</h3>
+      <p className="text-sm text-white/55 mb-7">{description}</p>
 
       {/* Price */}
-      <div className="mb-6">
-        <div className="flex items-baseline gap-1">
-          {price.match(/^\d/) ? (
-            <>
-              <span className="text-4xl md:text-5xl font-bold text-white">€{price}</span>
-              {period && <span className="text-gray-400">{period}</span>}
-            </>
-          ) : (
-            <span className="text-2xl md:text-3xl font-bold text-white">{price}</span>
-          )}
-        </div>
+      <div className="mb-7 flex items-baseline gap-1">
+        {price.match(/^\d/) ? (
+          <>
+            <span className="font-display text-5xl md:text-6xl leading-none text-white">€{price}</span>
+            {period && <span className="text-white/40 text-sm">{period}</span>}
+          </>
+        ) : (
+          <span className="font-display text-3xl md:text-4xl leading-none text-white">{price}</span>
+        )}
       </div>
 
       {/* Features */}
       <ul className="space-y-3 mb-8 flex-grow">
         {features.map((feature, index) => (
-          <li key={index} className="flex items-start gap-3">
-            <div
-              className={cn(
-                "w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5",
-                popular ? "bg-[#f1d37b]/20" : "bg-white/10",
-              )}
-            >
-              <Check className={cn("w-3 h-3", popular ? "text-[#edd67c]" : "text-gray-400")} />
-            </div>
-            <span className="text-gray-300 text-sm">{feature}</span>
+          <li key={index} className="flex items-start gap-3 text-sm text-white/70">
+            <Check className={cn("w-4 h-4 shrink-0 mt-0.5", popular ? "text-[#f1d37b]" : "text-white/40")} />
+            <span>{feature}</span>
           </li>
         ))}
       </ul>
 
       {/* CTA */}
-      <Button
-        asChild
+      <Link
+        href={`/${locale}/contact`}
         className={cn(
-          "w-full mt-auto",
+          "mt-auto inline-flex items-center justify-center gap-2 px-6 py-3 text-sm tracking-wide uppercase transition-colors rounded-full",
           popular
-            ? "bg-gradient-to-r from-[#f1d37b] to-[#e3c46a] hover:from-[#e3c46a] hover:to-[#bf9246] text-black font-semibold"
-            : "bg-white/10 hover:bg-white/20 text-white",
+            ? "bg-[#e3c46a] hover:bg-[#f1d37b] text-black font-medium"
+            : "border border-white/15 text-white hover:bg-white/5",
         )}
       >
-        <Link href="/contact">{t.services.askQuote}</Link>
-      </Button>
+        {t.services.askQuote}
+        <ArrowUpRight className="w-4 h-4" />
+      </Link>
     </div>
   )
 }

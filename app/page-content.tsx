@@ -8,78 +8,78 @@ import { ValueCard } from "@/components/value-card"
 import { ServiceCard } from "@/components/service-card"
 import { AudienceSection } from "@/components/audience-section"
 import { GalleryGrid } from "@/components/gallery-grid"
-import { Button } from "@/components/ui/button"
-import { Shield, Award, Heart, Sparkles, Car, Sofa, Store, ArrowRight, Calendar } from "lucide-react"
+import { Shield, Award, Heart, Sparkles, ArrowRight, ArrowUpRight } from "lucide-react"
 
 export default function HomePage() {
   const { locale, t } = useLocale()
 
   return (
     <>
-      {/* Hero Section */}
+      {/* Hero */}
       <Hero />
 
       {/* Value Propositions */}
-      <Section title={t.values.title} subtitle={t.values.subtitle}>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <Section eyebrow="01 — Why Sparkle Fix" title={t.values.title} subtitle={t.values.subtitle}>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-12 border-t border-white/[0.08] pt-12">
           <ValueCard
-            icon={<Shield className="w-7 h-7 text-[#edd67c]" />}
+            icon={<Shield />}
             title={t.values.reliable.title}
             description={t.values.reliable.description}
           />
           <ValueCard
-            icon={<Award className="w-7 h-7 text-[#edd67c]" />}
+            icon={<Award />}
             title={t.values.professional.title}
             description={t.values.professional.description}
           />
           <ValueCard
-            icon={<Heart className="w-7 h-7 text-[#edd67c]" />}
+            icon={<Heart />}
             title={t.values.family.title}
             description={t.values.family.description}
           />
           <ValueCard
-            icon={<Sparkles className="w-7 h-7 text-[#edd67c]" />}
+            icon={<Sparkles />}
             title={t.values.quality.title}
             description={t.values.quality.description}
           />
         </div>
       </Section>
 
-      {/* Services Overview */}
+      {/* Services — editorial numbered list */}
       <Section
+        eyebrow="02 — Services"
         title={t.services.title}
         subtitle={t.services.subtitle}
         actions={
-          <Button asChild variant="outline" className="border-white/20 text-white hover:bg-white/10 bg-transparent">
-            <Link href={`/${locale}/services`}>
-              {t.services.viewAll}
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </Link>
-          </Button>
+          <Link
+            href={`/${locale}/services`}
+            className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white underline-offset-[6px] hover:underline transition-colors"
+          >
+            {t.services.viewAll}
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         }
-        className="bg-gradient-to-b from-black to-gray-950"
       >
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+        <div className="flex flex-col border-b border-white/[0.08]">
           <ServiceCard
-            icon={<Car className="w-6 h-6 text-[#edd67c]" />}
+            index={0}
             title={t.services.basicWash.title}
             description={t.services.basicWash.description}
             from="35 €"
           />
           <ServiceCard
-            icon={<Sparkles className="w-6 h-6 text-[#edd67c]" />}
+            index={1}
             title={t.services.premiumDetail.title}
             description={t.services.premiumDetail.description}
             from="299 €"
           />
           <ServiceCard
-            icon={<Sofa className="w-6 h-6 text-[#edd67c]" />}
+            index={2}
             title={t.services.interior.title}
             description={t.services.interior.description}
             from="89 €"
           />
           <ServiceCard
-            icon={<Store className="w-6 h-6 text-[#edd67c]" />}
+            index={3}
             title={t.services.dealership.title}
             description={t.services.dealership.description}
             forDealerships
@@ -88,52 +88,53 @@ export default function HomePage() {
       </Section>
 
       {/* Audience Sections */}
-      <Section title={t.audience.title} className="bg-gray-950">
+      <Section eyebrow="03 — Who we serve" title={t.audience.title}>
         <AudienceSection />
       </Section>
 
-      {/* Booking CTA */}
-      <Section className="bg-gradient-to-br from-[#f1d37b]/10 via-black to-black">
-        <div className="text-center max-w-2xl mx-auto">
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#f1d37b]/20 to-[#e3c46a]/10 flex items-center justify-center mx-auto mb-6">
-            <Calendar className="w-8 h-8 text-[#edd67c]" />
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t.booking.title}</h2>
-          <p className="text-gray-400 text-lg mb-8">{t.booking.subtitle}</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              asChild
-              size="lg"
-              className="bg-gradient-to-r from-[#f1d37b] to-[#e3c46a] hover:from-[#e3c46a] hover:to-[#bf9246] text-black font-semibold px-8"
-            >
-              <Link href={`/${locale}/contact`}>
+      {/* Booking CTA — stripped, editorial */}
+      <Section>
+        <div className="border-t border-white/[0.08] pt-16 md:pt-20">
+          <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-end">
+            <div className="md:col-span-7">
+              <p className="eyebrow mb-5">04 — {t.booking.title}</p>
+              <h2 className="font-display text-4xl md:text-6xl leading-[1.02] tracking-[-0.015em] text-white">
+                {t.booking.title}
+              </h2>
+              <p className="mt-5 text-base md:text-lg text-white/60 max-w-xl">{t.booking.subtitle}</p>
+            </div>
+            <div className="md:col-span-5 flex flex-col sm:flex-row md:flex-col gap-3 md:items-end">
+              <Link
+                href={`/${locale}/contact`}
+                className="inline-flex items-center justify-center gap-2 bg-[#e3c46a] hover:bg-[#f1d37b] text-black font-medium uppercase tracking-wide text-sm px-7 py-4 rounded-full transition-colors"
+              >
                 {t.booking.ctaPrimary}
-                <ArrowRight className="ml-2 w-5 h-5" />
+                <ArrowUpRight className="w-4 h-4" />
               </Link>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="border-white/20 text-white hover:bg-white/10 bg-transparent"
-            >
-              <Link href={`/${locale}/contact`}>{t.booking.ctaSecondary}</Link>
-            </Button>
+              <Link
+                href={`/${locale}/contact`}
+                className="inline-flex items-center text-sm text-white/70 hover:text-white underline-offset-[6px] hover:underline"
+              >
+                {t.booking.ctaSecondary} →
+              </Link>
+            </div>
           </div>
         </div>
       </Section>
 
       {/* Gallery Teaser */}
       <Section
+        eyebrow="05 — Selected work"
         title={t.gallery.title}
         subtitle={t.gallery.subtitle}
         actions={
-          <Button asChild variant="outline" className="border-white/20 text-white hover:bg-white/10 bg-transparent">
-            <Link href={`/${locale}/gallery`}>
-              {t.gallery.viewAll}
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </Link>
-          </Button>
+          <Link
+            href={`/${locale}/gallery`}
+            className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white underline-offset-[6px] hover:underline transition-colors"
+          >
+            {t.gallery.viewAll}
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         }
       >
         <GalleryGrid showFilters={false} limit={6} />

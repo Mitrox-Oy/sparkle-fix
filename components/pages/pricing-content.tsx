@@ -3,29 +3,27 @@
 import Link from "next/link"
 import { useLocale } from "@/lib/locale-context"
 import { Section } from "@/components/section"
+import { PageHeader } from "@/components/page-header"
 import { PricingCard } from "@/components/pricing-card"
-import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 
 export function PricingContent() {
   const { locale, t } = useLocale()
 
-  return (
-    <div className="pt-20">
-      {/* Hero Section */}
-      <Section className="bg-gradient-to-b from-black via-gray-950 to-black">
-        <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            {t.pricing.title}
-          </h1>
-          <p className="text-xl text-gray-400 mb-4">{t.pricing.subtitle}</p>
-          <p className="text-sm text-gray-500">{t.pricing.vatNote}</p>
-        </div>
-      </Section>
+  const extras = [t.pricing.services.polishing, t.pricing.services.fullDetail]
 
-      {/* Pricing Grid */}
-      <Section className="bg-gray-950">
-        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12">
+  return (
+    <div>
+      <PageHeader
+        eyebrow={`— ${t.nav.pricing}`}
+        title={t.pricing.title}
+        subtitle={t.pricing.subtitle}
+        note={t.pricing.vatNote}
+      />
+
+      {/* Packages */}
+      <Section eyebrow="01 — Packages" title={t.pricing.title}>
+        <div className="grid md:grid-cols-3 gap-4 md:gap-5">
           <PricingCard
             title={t.pricing.packages.basic.title}
             price={t.pricing.packages.basic.price}
@@ -49,50 +47,38 @@ export function PricingContent() {
             features={t.pricing.packages.ceramic.features}
           />
         </div>
+      </Section>
 
-        {/* Additional Services */}
-        <div className="max-w-3xl mx-auto space-y-4">
-          <h3 className="text-2xl font-semibold text-white mb-6 text-center">
-            {t.services.title}
-          </h3>
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className="bg-white/5 border border-white/10 rounded-xl p-6">
-              <h4 className="text-lg font-semibold text-white mb-2">
-                {t.pricing.services.polishing.title}
-              </h4>
-              <p className="text-gray-400 text-sm mb-3">
-                {t.pricing.services.polishing.description}
-              </p>
-              <p className="text-[#edd67c] font-semibold">
-                {t.pricing.from} {t.pricing.services.polishing.price}€
-              </p>
+      {/* Additional services */}
+      <Section eyebrow="02 — Add-ons" title={t.services.title}>
+        <div className="grid md:grid-cols-2 border-t border-white/[0.08]">
+          {extras.map((service, i) => (
+            <div
+              key={i}
+              className="py-9 md:py-10 md:px-10 md:[&:nth-child(2)]:border-l border-white/[0.08]"
+            >
+              <div className="flex items-baseline justify-between gap-4">
+                <h4 className="font-display text-2xl md:text-3xl leading-tight tracking-[-0.01em] text-white">
+                  {service.title}
+                </h4>
+                <span className="text-[#edd67c] font-medium whitespace-nowrap">
+                  {t.pricing.from} {service.price}€
+                </span>
+              </div>
+              <p className="text-sm text-white/55 leading-relaxed mt-3 max-w-md">{service.description}</p>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-6">
-              <h4 className="text-lg font-semibold text-white mb-2">
-                {t.pricing.services.fullDetail.title}
-              </h4>
-              <p className="text-gray-400 text-sm mb-3">
-                {t.pricing.services.fullDetail.description}
-              </p>
-              <p className="text-[#edd67c] font-semibold">
-                {t.pricing.from} {t.pricing.services.fullDetail.price}€
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-12">
-          <Button
-            asChild
-            size="lg"
-            className="bg-gradient-to-r from-[#f1d37b] to-[#e3c46a] hover:from-[#e3c46a] hover:to-[#bf9246] text-black font-semibold px-8"
+        <div className="mt-14 flex">
+          <Link
+            href={`/${locale}/contact`}
+            className="inline-flex items-center gap-2 bg-[#e3c46a] hover:bg-[#f1d37b] text-black font-medium uppercase tracking-wide text-sm px-7 py-4 rounded-full transition-colors"
           >
-            <Link href={`/${locale}/contact`}>
-              {t.pricing.cta}
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Link>
-          </Button>
+            {t.pricing.cta}
+            <ArrowUpRight className="w-4 h-4" />
+          </Link>
         </div>
       </Section>
     </div>

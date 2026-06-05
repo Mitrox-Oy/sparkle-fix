@@ -2,61 +2,57 @@
 
 import { useLocale } from "@/lib/locale-context"
 import { Section } from "@/components/section"
+import { PageHeader } from "@/components/page-header"
 import { beforeAfterProjects } from "@/lib/before-after-projects"
 import { publicUrl } from "@/lib/utils"
 
 export function BeforeAfterContent() {
   const { locale, t } = useLocale()
+  const [beforeLabel, afterLabel] = t.beforeAfter.label.split(" & ")
 
   return (
-    <div className="pt-20">
-      {/* Hero Section */}
-      <Section className="bg-gradient-to-b from-black via-gray-950 to-black">
-        <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            {t.beforeAfterPage.title}
-          </h1>
-          <p className="text-xl text-gray-400">{t.beforeAfterPage.subtitle}</p>
-        </div>
-      </Section>
+    <div>
+      <PageHeader
+        eyebrow={`— ${t.beforeAfter.label}`}
+        title={t.beforeAfterPage.title}
+        subtitle={t.beforeAfterPage.subtitle}
+      />
 
-      {/* Before & After Grid */}
-      <Section className="bg-gray-950">
+      <Section>
         {beforeAfterProjects.length > 0 ? (
-          <div className="space-y-12">
+          <div className="border-t border-white/[0.08]">
             {beforeAfterProjects.map((project, index) => {
               const title = locale === "fi" ? project.titleFi : project.titleEn
-
               return (
-                <div
-                  key={index}
-                  className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden"
-                >
-                  <h3 className="text-2xl font-semibold text-white p-6 pb-2">{title}</h3>
-                  <div className="grid md:grid-cols-2 gap-4 p-6">
+                <div key={index} className="py-12 md:py-16 border-b border-white/[0.08]">
+                  <div className="flex items-baseline gap-4 mb-8">
+                    <span className="font-mono text-xs tracking-[0.25em] text-white/40">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="font-display text-3xl md:text-4xl leading-[1.05] tracking-[-0.01em] text-white">
+                      {title}
+                    </h3>
+                  </div>
+                  <div className="grid md:grid-cols-2 gap-3 md:gap-4">
                     <div>
-                      <p className="text-sm text-gray-500 mb-2">
-                        {t.beforeAfter.label.split(" & ")[0]}
-                      </p>
+                      <p className="eyebrow mb-3">{beforeLabel}</p>
                       {project.beforeImages.map((img, i) => (
                         <img
                           key={i}
                           src={publicUrl(img)}
-                          alt={`Before - ${title}`}
-                          className="w-full h-64 object-cover rounded-lg mb-4"
+                          alt={`${beforeLabel} - ${title}`}
+                          className="w-full h-72 object-cover mb-3"
                         />
                       ))}
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500 mb-2">
-                        {t.beforeAfter.label.split(" & ")[1]}
-                      </p>
+                      <p className="eyebrow mb-3 text-[#f1d37b]">{afterLabel}</p>
                       {project.afterImages.map((img, i) => (
                         <img
                           key={i}
                           src={publicUrl(img)}
-                          alt={`After - ${title}`}
-                          className="w-full h-64 object-cover rounded-lg mb-4"
+                          alt={`${afterLabel} - ${title}`}
+                          className="w-full h-72 object-cover mb-3"
                         />
                       ))}
                     </div>
@@ -66,9 +62,9 @@ export function BeforeAfterContent() {
             })}
           </div>
         ) : (
-          <div className="text-center py-12">
-            <p className="text-gray-400 text-lg">
-              {locale === "fi" ? "Tulossa pian..." : "Coming soon..."}
+          <div className="py-16 border-t border-white/[0.08]">
+            <p className="font-display text-3xl text-white/50">
+              {locale === "fi" ? "Tulossa pian…" : "Coming soon…"}
             </p>
           </div>
         )}

@@ -2,70 +2,57 @@
 
 import Link from "next/link"
 import { useLocale } from "@/lib/locale-context"
-import { Building2, User, Check, ArrowRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Building2, User, Check, ArrowUpRight } from "lucide-react"
 
 export function AudienceSection() {
-  const { t } = useLocale()
+  const { t, locale } = useLocale()
+
+  const blocks = [
+    {
+      icon: <Building2 className="w-5 h-5" />,
+      title: t.audience.dealerships.title,
+      description: t.audience.dealerships.description,
+      benefits: t.audience.dealerships.benefits,
+      cta: t.services.askQuote,
+    },
+    {
+      icon: <User className="w-5 h-5" />,
+      title: t.audience.private.title,
+      description: t.audience.private.description,
+      benefits: t.audience.private.benefits,
+      cta: t.services.bookNow,
+    },
+  ]
 
   return (
-    <div className="grid lg:grid-cols-2 gap-6">
-      {/* Dealerships */}
-      <div className="group relative p-8 rounded-2xl bg-gradient-to-br from-green-500/10 to-green-600/5 border border-green-500/20 hover:border-green-500/40 transition-all">
-        <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center">
-          <Building2 className="w-6 h-6 text-green-400" />
-        </div>
-        <h3 className="text-2xl font-bold text-white mb-3">{t.audience.dealerships.title}</h3>
-        <p className="text-gray-400 mb-6">{t.audience.dealerships.description}</p>
-        <ul className="space-y-3 mb-6">
-          {t.audience.dealerships.benefits.map((benefit, index) => (
-            <li key={index} className="flex items-center gap-3">
-              <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center">
-                <Check className="w-3 h-3 text-green-400" />
-              </div>
-              <span className="text-gray-300 text-sm">{benefit}</span>
-            </li>
-          ))}
-        </ul>
-        <Button
-          asChild
-          variant="outline"
-          className="border-green-500/30 text-green-400 hover:bg-green-500/10 bg-transparent"
+    <div className="grid lg:grid-cols-2 border-t border-white/[0.08]">
+      {blocks.map((block, i) => (
+        <Link
+          key={i}
+          href={`/${locale}/contact`}
+          className="group relative flex flex-col py-10 md:py-12 lg:px-10 lg:[&:nth-child(2)]:border-l border-white/[0.08] hover:bg-white/[0.02] transition-colors"
         >
-          <Link href="/contact">
-            {t.services.askQuote}
-            <ArrowRight className="ml-2 w-4 h-4" />
-          </Link>
-        </Button>
-      </div>
-
-      {/* Private Customers */}
-      <div className="group relative p-8 rounded-2xl bg-gradient-to-br from-[#f1d37b]/10 to-[#e3c46a]/5 border border-[#f1d37b]/20 hover:border-[#f1d37b]/40 transition-all">
-        <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-[#f1d37b]/10 flex items-center justify-center">
-          <User className="w-6 h-6 text-[#edd67c]" />
-        </div>
-        <h3 className="text-2xl font-bold text-white mb-3">{t.audience.private.title}</h3>
-        <p className="text-gray-400 mb-6">{t.audience.private.description}</p>
-        <ul className="space-y-3 mb-6">
-          {t.audience.private.benefits.map((benefit, index) => (
-            <li key={index} className="flex items-center gap-3">
-              <div className="w-5 h-5 rounded-full bg-[#f1d37b]/20 flex items-center justify-center">
-                <Check className="w-3 h-3 text-[#edd67c]" />
-              </div>
-              <span className="text-gray-300 text-sm">{benefit}</span>
-            </li>
-          ))}
-        </ul>
-        <Button
-          asChild
-          className="bg-gradient-to-r from-[#f1d37b] to-[#e3c46a] hover:from-[#e3c46a] hover:to-[#bf9246] text-black font-semibold"
-        >
-          <Link href="/contact">
-            {t.services.bookNow}
-            <ArrowRight className="ml-2 w-4 h-4" />
-          </Link>
-        </Button>
-      </div>
+          <div className="flex items-start justify-between gap-6 mb-6">
+            <div className="text-[#e3c46a]">{block.icon}</div>
+            <ArrowUpRight className="w-5 h-5 text-white/40 group-hover:text-[#f1d37b] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
+          </div>
+          <h3 className="font-display text-3xl md:text-4xl leading-[1.05] tracking-[-0.01em] text-white mb-4">
+            {block.title}
+          </h3>
+          <p className="text-sm text-white/55 leading-relaxed max-w-md mb-8">{block.description}</p>
+          <ul className="space-y-3">
+            {block.benefits.map((benefit, idx) => (
+              <li key={idx} className="flex items-center gap-3 text-sm text-white/70">
+                <Check className="w-3.5 h-3.5 text-[#e3c46a] shrink-0" />
+                <span>{benefit}</span>
+              </li>
+            ))}
+          </ul>
+          <span className="mt-8 text-xs uppercase tracking-[0.2em] text-white/50 group-hover:text-[#f1d37b] transition-colors">
+            {block.cta} →
+          </span>
+        </Link>
+      ))}
     </div>
   )
 }

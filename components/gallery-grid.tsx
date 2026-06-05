@@ -57,65 +57,50 @@ export function GalleryGrid({ showFilters = true, limit }: GalleryGridProps) {
 
   return (
     <>
-      {/* Filters + Before & After box */}
+      {/* Filters + Before & After link */}
       {showFilters && (
-        <div className="flex flex-wrap gap-2 mb-8 items-stretch">
-          {filters.map((f) => (
-            <button
-              key={f.value}
-              onClick={() => setFilter(f.value === "dealerships" ? "dealership" : (f.value as "all" | "private"))}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                filter === f.value || (f.value === "dealerships" && filter === "dealership")
-                  ? "bg-[#f1d37b] text-black"
-                  : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white border border-white/10"
-              }`}
-            >
-              {f.label}
-            </button>
-          ))}
+        <div className="flex flex-wrap gap-x-6 gap-y-3 mb-8 items-center border-b border-white/[0.08] pb-6">
+          {filters.map((f) => {
+            const active = filter === f.value || (f.value === "dealerships" && filter === "dealership")
+            return (
+              <button
+                key={f.value}
+                onClick={() => setFilter(f.value === "dealerships" ? "dealership" : (f.value as "all" | "private"))}
+                className={`text-xs uppercase tracking-[0.18em] transition-colors ${
+                  active ? "text-[#f1d37b]" : "text-white/50 hover:text-white"
+                }`}
+              >
+                {f.label}
+              </button>
+            )
+          })}
 
-          {/* Before & After projects box */}
           {beforeAfterProjects.length > 0 && (
             <Link
               href="/before-after"
-              className="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-left hover:bg-white/10 transition-all"
+              className="ml-auto inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-white/60 hover:text-white transition-colors"
             >
-              <div className="flex -space-x-2">
-                {beforeAfterProjects[0].beforeImages.slice(0, 1).concat(beforeAfterProjects[0].afterImages.slice(0, 1)).map((src, idx) => (
-                  <div
-                    key={`preview-${idx}`}
-                    className="relative w-10 h-10 rounded-lg overflow-hidden border border-black/40 bg-black/40"
-                  >
-                    <img src={src} alt="Before & After preview" className="w-full h-full object-cover" />
-                  </div>
-                ))}
-              </div>
-              <div className="flex flex-col">
-                <span className="text-sm font-semibold text-white">{t.beforeAfter.label}</span>
-                <span className="text-xs text-gray-400">{t.beforeAfter.helper}</span>
-              </div>
+              {t.beforeAfter.label} →
             </Link>
           )}
         </div>
       )}
 
-      {/* Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {/* Grid — dense, hairline gaps, no rounding */}
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-1 md:gap-1.5">
         {displayImages.map((image) => (
           <button
             key={image.id}
             onClick={() => setSelectedImage(image)}
-            className="group relative aspect-[4/3] rounded-xl overflow-hidden bg-white/5"
+            className="group relative aspect-square overflow-hidden bg-white/5"
           >
             <img
               src={image.src || publicUrl("placeholder.svg")}
               alt={image.alt}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-colors flex items-center justify-center">
-              <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                <ZoomIn className="w-6 h-6 text-white" />
-              </div>
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+              <ZoomIn className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
           </button>
         ))}

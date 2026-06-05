@@ -9,6 +9,14 @@ export const translations = {
       gallery: "Galleria",
       contact: "Yhteystiedot",
     },
+    // UI / actions
+    ui: {
+      menu: "Valikko",
+      close: "Sulje",
+      call: "Soita",
+      bookNow: "Varaa aika",
+      getInTouch: "Ota yhteyttä",
+    },
     // Hero
     hero: {
       headline: "Luotettavaa automeikkausta",
@@ -16,6 +24,9 @@ export const translations = {
         "Huolehdimme autostasi kuin se olisi omamme. Ammattitaitoinen käsittely autoliikkeille ja yksityisille asiakkaille.",
       ctaPrimary: "Varaa aika",
       ctaSecondary: "Katso palvelut",
+      eyebrow: "Est. Espoo · Autopesu & Detailing",
+      locationBadge: "Espoo, Suomi",
+      trustLine: "5.0 · 100+ asiakasta · Google-arvostelut",
     },
     // Value propositions
     values: {
@@ -302,6 +313,13 @@ export const translations = {
         description: "Valitse sinulle sopiva aika alla olevasta kalenterista.",
       },
     },
+    // Booking embed placeholder
+    bookingEmbed: {
+      title: "Ajanvaraus tulossa pian",
+      description: "Online-ajanvaraus otetaan käyttöön pian. Sillä välin voit varata ajan ottamalla yhteyttä.",
+      callCta: "Soita meille",
+      emailCta: "Lähetä sähköpostia",
+    },
   },
   en: {
     // Navigation
@@ -313,6 +331,14 @@ export const translations = {
       gallery: "Gallery",
       contact: "Contact",
     },
+    // UI / actions
+    ui: {
+      menu: "Menu",
+      close: "Close",
+      call: "Call",
+      bookNow: "Book now",
+      getInTouch: "Get in touch",
+    },
     // Hero
     hero: {
       headline: "Reliable car detailing",
@@ -320,6 +346,9 @@ export const translations = {
         "We take care of your car like it's our own. Professional service for dealerships and private customers.",
       ctaPrimary: "Book now",
       ctaSecondary: "View services",
+      eyebrow: "Est. Espoo · Car Wash & Detailing",
+      locationBadge: "Espoo, Finland",
+      trustLine: "5.0 · 100+ Customers · Google Reviews",
     },
     // Value propositions
     values: {
@@ -601,6 +630,13 @@ export const translations = {
         title: "Book an appointment",
         description: "Choose a suitable time from the calendar below.",
       },
+    },
+    // Booking embed placeholder
+    bookingEmbed: {
+      title: "Online booking coming soon",
+      description: "Online booking will be available shortly. In the meantime, please get in touch to book.",
+      callCta: "Call us",
+      emailCta: "Send email",
     },
   },
 } as const

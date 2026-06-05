@@ -1,5 +1,6 @@
 import type { Locale } from "./metadata"
 import type { WithContext, LocalBusiness, Service, BreadcrumbList } from "schema-dts"
+import { PHONE_E164 } from "./contact"
 
 const SITE_URL = "https://sparklefix.fi"
 
@@ -16,7 +17,7 @@ export function getLocalBusinessStructuredData(locale: Locale): WithContext<Loca
     image: `${SITE_URL}/sparkle-fix-logo.jpg`,
     logo: `${SITE_URL}/sparkle-fix-logo-nobackground.png`,
     url: SITE_URL,
-    telephone: "+358451228700",
+    telephone: PHONE_E164,
     email: "sparkle.fix@hotmail.com",
     address: {
       "@type": "PostalAddress",

@@ -1,6 +1,9 @@
 "use client"
 
-// Configuration - Update these URLs when you have your actual booking links
+import { useLocale } from "@/lib/locale-context"
+import { PHONE_TEL, PHONE_DISPLAY } from "@/lib/contact"
+import { Phone, Mail } from "lucide-react"
+
 const BOOKING_CALENDLY_URL = "https://calendly.com/sparklefix"
 const BOOKING_TIMMA_URL = "https://timma.fi/sparklefix"
 const BOOKING_GOOGLE_CALENDAR_URL = "https://calendar.google.com/calendar/appointments"
@@ -14,6 +17,8 @@ interface BookingEmbedProps {
 }
 
 export function BookingEmbed({ provider = "placeholder", url, className }: BookingEmbedProps) {
+  const { t } = useLocale()
+
   const getEmbedUrl = () => {
     if (url) return url
     switch (provider) {
@@ -33,34 +38,29 @@ export function BookingEmbed({ provider = "placeholder", url, className }: Booki
   if (!embedUrl || provider === "placeholder") {
     return (
       <div
-        className={`bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 rounded-2xl p-8 text-center ${className}`}
+        className={`border border-white/10 p-8 md:p-12 text-left ${className ?? ""}`}
       >
-        <div className="w-16 h-16 rounded-full bg-[#f1d37b]/10 flex items-center justify-center mx-auto mb-4">
-          <svg className="w-8 h-8 text-[#edd67c]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={1.5}
-              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-            />
-          </svg>
-        </div>
-        <h3 className="text-xl font-semibold text-white mb-2">Ajanvaraus tulossa pian</h3>
-        <p className="text-gray-400 text-sm mb-6">
-          Online-ajanvaraus otetaan käyttöön pian. Sillä välin voit varata ajan ottamalla yhteyttä.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+        <p className="eyebrow mb-5">{t.contactPage.booking.title}</p>
+        <h3 className="font-display text-3xl md:text-4xl leading-[1.05] tracking-[-0.01em] text-white mb-3">
+          {t.bookingEmbed.title}
+        </h3>
+        <p className="text-sm text-white/60 mb-8 max-w-md">{t.bookingEmbed.description}</p>
+        {/* Phone primary on mobile (flex-col-reverse), email primary on desktop */}
+        <div className="flex flex-col-reverse sm:flex-row gap-3">
           <a
             href="mailto:sparkle.fix@hotmail.com"
-            className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-[#f1d37b] to-[#e3c46a] text-black font-semibold rounded-xl hover:from-[#e3c46a] hover:to-[#bf9246] transition-all"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-white/15 text-white text-sm tracking-wide hover:bg-white/5 transition-colors"
           >
-            Lähetä sähköpostia
+            <Mail className="w-4 h-4" />
+            {t.bookingEmbed.emailCta}
           </a>
           <a
-            href="tel:0451228680"
-            className="inline-flex items-center justify-center px-6 py-3 bg-white/10 text-white font-medium rounded-xl hover:bg-white/20 transition-all"
+            href={PHONE_TEL}
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#e3c46a] hover:bg-[#f1d37b] text-black font-medium uppercase tracking-wide text-sm rounded-full transition-colors"
           >
-            Soita meille
+            <Phone className="w-4 h-4" />
+            {t.bookingEmbed.callCta}
+            <span className="hidden sm:inline text-black/70 font-normal normal-case">· {PHONE_DISPLAY}</span>
           </a>
         </div>
       </div>
@@ -68,13 +68,13 @@ export function BookingEmbed({ provider = "placeholder", url, className }: Booki
   }
 
   return (
-    <div className={`rounded-2xl overflow-hidden ${className}`}>
+    <div className={`overflow-hidden border border-white/10 ${className ?? ""}`}>
       <iframe
         src={embedUrl}
         width="100%"
         height="600"
         frameBorder="0"
-        className="w-full min-h-[600px] bg-white rounded-2xl"
+        className="w-full min-h-[600px] bg-white"
         title="Booking Calendar"
       />
     </div>

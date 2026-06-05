@@ -2,28 +2,33 @@
 
 import { useLocale } from "@/lib/locale-context"
 import { Section } from "@/components/section"
-import { Shield, Target, Handshake, CheckCircle2 } from "lucide-react"
+import { PageHeader } from "@/components/page-header"
+import { Shield, Target, Handshake } from "lucide-react"
 import { publicUrl } from "@/lib/utils"
 
 export function AboutContent() {
   const { t } = useLocale()
 
-  return (
-    <div className="pt-20">
-      {/* Hero Section */}
-      <Section className="bg-gradient-to-b from-black via-gray-950 to-black">
-        <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            {t.about.title}
-          </h1>
-          <p className="text-xl text-gray-400">{t.about.subtitle}</p>
-        </div>
-      </Section>
+  const steps = [
+    { title: t.about.howWeWork.step1.title, description: t.about.howWeWork.step1.description },
+    { title: t.about.howWeWork.step2.title, description: t.about.howWeWork.step2.description },
+    { title: t.about.howWeWork.step3.title, description: t.about.howWeWork.step3.description },
+  ]
 
-      {/* Story Section */}
-      <Section title={t.about.story.title} className="bg-gray-950">
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto items-center">
-          <div className="space-y-6 text-white text-lg leading-relaxed">
+  const values = [
+    { icon: <Shield className="w-5 h-5" />, ...t.about.values.trust },
+    { icon: <Target className="w-5 h-5" />, ...t.about.values.quality },
+    { icon: <Handshake className="w-5 h-5" />, ...t.about.values.partnership },
+  ]
+
+  return (
+    <div>
+      <PageHeader eyebrow={`— ${t.nav.about}`} title={t.about.title} subtitle={t.about.subtitle} />
+
+      {/* Story */}
+      <Section eyebrow="01 — Our story" title={t.about.story.title}>
+        <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center border-t border-white/[0.08] pt-12">
+          <div className="space-y-6 text-white/80 text-base md:text-lg leading-relaxed">
             <p>{t.about.story.p1}</p>
             <p>{t.about.story.p2}</p>
             <p>{t.about.story.p3}</p>
@@ -32,69 +37,44 @@ export function AboutContent() {
             <img
               src={publicUrl("sparkle-fix-tietoa-meista.jpg")}
               alt="Sparkle Fix Oy"
-              className="w-full h-auto rounded-2xl object-cover shadow-lg"
+              className="w-full h-auto object-cover"
             />
           </div>
         </div>
       </Section>
 
-      {/* How We Work */}
-      <Section title={t.about.howWeWork.title} className="bg-black">
-        <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <div className="text-center">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#f1d37b]/20 to-[#e3c46a]/10 flex items-center justify-center mx-auto mb-4">
-              <Target className="w-8 h-8 text-[#edd67c]" />
+      {/* How we work — numbered editorial list */}
+      <Section eyebrow="02 — Process" title={t.about.howWeWork.title}>
+        <div className="grid md:grid-cols-3 border-t border-white/[0.08]">
+          {steps.map((step, i) => (
+            <div
+              key={i}
+              className="py-10 md:py-12 md:px-10 md:[&:not(:first-child)]:border-l border-white/[0.08]"
+            >
+              <span className="font-mono text-xs tracking-[0.25em] text-white/40">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <h3 className="font-display text-2xl md:text-3xl leading-[1.05] tracking-[-0.01em] text-white mt-5 mb-3">
+                {step.title}
+              </h3>
+              <p className="text-sm text-white/55 leading-relaxed">{step.description}</p>
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">
-              {t.about.howWeWork.step1.title}
-            </h3>
-            <p className="text-gray-400">{t.about.howWeWork.step1.description}</p>
-          </div>
-          <div className="text-center">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#f1d37b]/20 to-[#e3c46a]/10 flex items-center justify-center mx-auto mb-4">
-              <CheckCircle2 className="w-8 h-8 text-[#edd67c]" />
-            </div>
-            <h3 className="text-xl font-semibold text-white mb-2">
-              {t.about.howWeWork.step2.title}
-            </h3>
-            <p className="text-gray-400">{t.about.howWeWork.step2.description}</p>
-          </div>
-          <div className="text-center">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#f1d37b]/20 to-[#e3c46a]/10 flex items-center justify-center mx-auto mb-4">
-              <Shield className="w-8 h-8 text-[#edd67c]" />
-            </div>
-            <h3 className="text-xl font-semibold text-white mb-2">
-              {t.about.howWeWork.step3.title}
-            </h3>
-            <p className="text-gray-400">{t.about.howWeWork.step3.description}</p>
-          </div>
+          ))}
         </div>
       </Section>
 
       {/* Values */}
-      <Section title={t.about.values.title} className="bg-gradient-to-b from-gray-950 to-black">
-        <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-            <Shield className="w-10 h-10 text-[#edd67c] mb-4" />
-            <h3 className="text-xl font-semibold text-white mb-2">
-              {t.about.values.trust.title}
-            </h3>
-            <p className="text-gray-400">{t.about.values.trust.description}</p>
-          </div>
-          <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-            <Target className="w-10 h-10 text-[#edd67c] mb-4" />
-            <h3 className="text-xl font-semibold text-white mb-2">
-              {t.about.values.quality.title}
-            </h3>
-            <p className="text-gray-400">{t.about.values.quality.description}</p>
-          </div>
-          <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-            <Handshake className="w-10 h-10 text-[#edd67c] mb-4" />
-            <h3 className="text-xl font-semibold text-white mb-2">
-              {t.about.values.partnership.title}
-            </h3>
-            <p className="text-gray-400">{t.about.values.partnership.description}</p>
-          </div>
+      <Section eyebrow="03 — Values" title={t.about.values.title}>
+        <div className="grid md:grid-cols-3 gap-x-10 gap-y-12 border-t border-white/[0.08] pt-12">
+          {values.map((value, i) => (
+            <div key={i} className="flex flex-col">
+              <div className="text-[#e3c46a] mb-5">{value.icon}</div>
+              <h3 className="font-display text-2xl md:text-3xl leading-[1.05] tracking-[-0.01em] text-white mb-3">
+                {value.title}
+              </h3>
+              <p className="text-sm text-white/55 leading-relaxed max-w-xs">{value.description}</p>
+            </div>
+          ))}
         </div>
       </Section>
     </div>
